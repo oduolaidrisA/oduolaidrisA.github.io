@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Idris Oduola</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="academic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!--MathJax for Latex Typesetting-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+</head>
+<body>
+    <!--The Header-->
+    <header>
+        <h2>Welcome to my Webpage!</h2>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+    </nav>
+    </header>
+
+    <main>
+        <aside>
+      <img src="images/my image.jpg" alt="Profile picture">
+      <h3>Idris Oduola</h3>
+      <p>MSc @ KFUPM <br> BSc @ University of Ilorin</p>
+
+      <div class="social-icons">
+        <a href="https://github.com/oduolaidrisA" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="http://www.linkedin.com/in/oduolaidrisadewale" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:idrisoduola47@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <button class="anime-btn margin-cv">
+        <span>
+          <a href="docs/CV_idris_updated.pdf" target="_blank">View CV</a>
+        </span>
+      </button>
+
+    </aside>
+    <div>
+    <article class="content">
+        <h2>Projects</h2>
+        <p>
+          I am currently involved in a few projects—some personal and others in collaboration with friends.
+          Below is an illustrative list of current and past projects:
+        </p>
+        <h4>1. Full Waveform Inversion as a Gradient Flow Problem</h4>
+        <p>
+          Full Waveform Inversion (FWI) is an advanced inverse method used widely in geophysics to determine 
+          subsurface properties. The procedure involves iteratively solving a forward problem coupled with an inverse problem, hence 
+          computationally expensive using traditional numerical methods which are slow but well-understood.
+        </p>
+        <p>
+          Machine learning (ML) provide a promising alternative: once trained, models can deliver near-instant predictions on new seismic 
+          data without repeatedly solving the forward problem. Unfortunately, most current ML models for FWI are purely data-driven (black boxes),
+          with limited guarantees for accuracy, consistency  of the model. This is even worse when the data is out-of-distribution. 
+          This lack of reliability is a serious barrier to deployment in real-world settings, as errors can have multi-million-dollar consequences.
+          Even the top model (a Vision Transformer) in a recent Kaggle FWI competition, was still purely data-driven. 
+        </p>
+        <p>
+          To address this, it is imperative to build ML models that respect the governing mathematics and physics, and are supported 
+          by extensive error analysis. For this, I decided to recast FWI as a gradient-flow problem and design a ML model that respect energy dissipation.     
+        </p>
+        <p>
+          The idea is to use an encoder-decoder approach (not in the usual sense of latent space), to solve the forward and inverse problem 
+          jointly.  Further details are provided in this research statement which I drafted <a href="docs/Gradient_flow_for_FWI (1).pdf" target="_blank">(view here)</a> 
+          and initial results of the project can be found <a href="https://github.com/oduolaidrisA/Kaggle/tree/main/Geophysical_Waveform_Inversion" target="_blank">here</a>. 
+        </p>
+        <!--<p>
+          Unfortunately, I am handicapped due to insufficient computational resources on my own for such interestingly important project.
+          Thus, I am open to PhD or research assistantship roles to complete the project. I am grateful to KFUPM jrcai for allowing me use their
+          GPU for some time.
+        </p>-->
+
+        <h4>2. Hands-on Scientific Machine Learning eBook</h4>
+          <p>
+          SciML is a fast-evolving field that sits at the intersection of scientific computing and machine learning. 
+          For newcomers, it can be quite overwhelming: the learning curve is steep, the literature is vast 
+          (worse of all, many are paywalled while some cryptic), and the scientific foundations are not always easy to piece together.
+          </p>
+          <p>
+          Initially, I began documenting my own learning journey and implementations to make sense of the field. Around that time, 
+          I was fortunate to discuss with <a href="https://xiaoyuxie.top/#Home" target="_blank">Xiaoyu Xie</a>, who was independently 
+          working on an interactive eBook. The idea of an interactive eBook was even cooler and we decided to collaborate.
+          While my intent was to give back to the community, the past few months have been incredibly rewarding for me personally. 
+          I have ventured into Neural ODEs, Neural Fields, Autoencoders and VAEs, Graph Neural Networks, and even Transformers. 
+          I have also come across truly fascinating researches along the way.
+          </p>
+          <p>
+          Though we are still in the early stages, this project is something I am excited about and cannot wait to see how it 
+          evolves after it's launch.
+        </p>
+        <div class="gif-grid">
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/fno_vorticity.jpg" preload="none" width="480" height="270">
+              <source data-src="images/fno_vorticity.webm" type="video/webm">
+              <source data-src="images/fno_vorticity.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/fno_vorticity.gif" alt="FNO on Navier-Stokes" class="gif-img special-gif">-->
+            <div class="caption special-gif">
+              Vorticity of 2D-Navier-Stokes using Fourier Neural Operator (FNO)
+            </div>
+          </div>
+   
+        
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/evolution_solution_at_each_dt.jpg" preload="none" width="480" height="270">
+              <source data-src="images/evolution_solution_at_each_dt.webm" type="video/webm">
+              <source data-src="images/evolution_solution_at_each_dt.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/evolution_solution_at_each_dt.gif" alt="EDNN Advection" class="gif-img">-->
+            <div class="caption">
+              Solving the Advection equation using Evolutional Deep Neural Network (EDNN)
+            </div>
+          </div>
+        </div>
+
+      
+
+
+        <h4>3. ML for Phase-Field Modeling</h4>
+        <p>
+          In collaboration with Wahab Abdul, a PhD student in KFUPM working on Moving Interface Problems.
+          We aim to build a surrogate model that augments numerical methods for Phase-Field modeling. Since numerical methods with 
+          very small time steps are very slow and computationally expensive, the idea is to obtain some data by solving the problem using
+          a well-known numerical method (e.g Spectral methods) at large time steps, and then a ML approach for continuous-time dynamics. 
+          Given our dataset, Fourier Neural Operator (FNO) gave the best approximation (probably because the data was obtained using Fourier 
+          Spectral Method). Unfortunately, the vanilla FNO is autoregressive, therefore, we are exploring
+          how to induce a Neural ODE into an FNO, by encoding into a suitable latent space to reduce computational cost.
+        </p>
+        <p>
+          It is amusing to see that truncating the higher frequency modes in a FNO is infact a latent representation. Thus, the main 
+          challenge is to construct a Neural ODE that evolves directly in the truncated Fourier (latent) space such that it becomes an 
+          evolution equation in spectral space.
+        </p>
+ 
+        <div class="gif-grid">
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/double_bubble.jpg" preload="none" width="480" height="270">
+              <source data-src="images/double_bubble.webm" type="video/webm">
+              <source data-src="images/double_bubble.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/double_bubble.gif" alt="FNO for Phase-Field1" class="gif-img special-gif">-->
+            <div class="gif-meta">
+              <p class="gif-topic"></p>
+              <h3 class="gif-title"></h3>
+            </div>
+          </div>
+        
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/horizon_bar.jpg" preload="none" width="480" height="270">
+              <source data-src="images/horizon_bar.webm" type="video/webm">
+              <source data-src="images/horizon_bar.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/horizon_bar.gif" alt="FNO for Phase-Field2" class="gif-img special-gif">-->
+            <div class="gif-meta">
+              <p class="gif-topic"></p>
+              <h3 class="gif-title"></h3>
+            </div>
+          </div>
+        </div>
+ 
+
+        <h4>4. Physics-Informed Neural Networks for Quantum Eigenvalue Problems</h4>
+        <p>
+          For my MS thesis, I worked on using PINNs to obtain family of solutions. Thus, I focused on obtaining eigenpairs of the time-independent Schrödinger equation,
+          across different potentials. Instead of training separate networks for eigenvalues and eigenfunctions (Figs. 3–4), a single network 
+          represents the eigenfunction, and the corresponding eigenvalue is obtained by evaluating Rayleigh quotient on the network output. 
+          This accelerated convergence relative to the two‑network baseline. To obtain higher energy levels, I considered two strategies:
+          (i) a deflation approach that learns eigenpairs sequentially (Fig. 1), and (ii) a self‑attention–based approach that returns arbitrary number of eigenpairs 
+          in a single forward pass (Fig. 2). Symmetry was also enforced so the model is equivariant.
+        </p>
+
+        <div class="gif-grid">
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/eigenvalue_qos.jpg" preload="none" width="480" height="270">
+              <source data-src="images/eigenvalue_qos.webm" type="video/webm">
+              <source data-src="images/eigenvalue_qos.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/eigenvalue_qos.gif" alt="deflation method" class="gif-img">-->
+            <div class="caption">
+              (1) Eigenvalues of Harmonic oscillator using PINN with Rayleigh quotient and 
+              a deflection technique for higher energy levels. This is about \(5 \times \)
+              faster and convergence to higher energy levels is almost instant.
+            </div>
+          </div>
+        
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/eigenfunctions_mult.jpg" preload="none" width="480" height="270">
+              <source data-src="images/eigenfunctions_mult.webm" type="video/webm">
+              <source data-src="images/eigenfunctions_mult.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/eigenfunctions_mult.gif" alt="attention method" class="gif-img">-->
+            <div class="caption">
+              (2) Eigenfunctions of the infinite well using PINN with Rayleigh quotient and self-attention mechanism.
+              This is about \(9 \times \) faster, and multiple eigenfunctions are obtained at once.
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="gif-grid">
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/eigenfunction.jpg" preload="none" width="480" height="270">
+              <source data-src="images/eigenfunction.webm" type="video/webm">
+              <source data-src="images/eigenfunction.mp4"  type="video/mp4">
+            </video>
+
+            <!--<img src="images/eigenfunction.gif" alt="PINN to obtain eigenfunction" class="gif-img">-->
+            <div class="caption">
+              (3) First eigenfunction of Infinite well without Rayleigh quotient. About \(10^3\) epochs 
+                is needed to obtain only one eigenfunction.
+            </div>
+          </div>
+        
+          <div class="gif-card">
+            <video class="gif-img lazyvid" autoplay loop muted playsinline
+              poster="images/eigenvalue.jpg" preload="none" width="480" height="270">
+              <source data-src="images/eigenvalue.webm" type="video/webm">
+              <source data-src="images/eigenvalue.mp4"  type="video/mp4">
+            </video>
+            <!--<img src="images/eigenvalue.gif" alt="PINN to obtain eigenvalue" class="gif-img">-->
+            <div class="caption">
+              (4) First eigenvalue of infinite well obtained without Rayleigh quotient. About \(10^3\) epochs 
+                is needed to obtain only one eigenvalue.
+            </div>
+          </div>
+        </div>
+    </article>
+    </div>
+
+    </main>
+    <footer>
+    <p>&copy; 2025 Idris Oduola</p>
+    <p>
+      <em>Built by Idris Oduola (including HTML & CSS). All rights reserved.</em>
+    </p>
+  </footer>
+
+  <!--Script for video-->
+  <script>
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if (!e.isIntersecting) return;
+        const v = e.target;
+        v.querySelectorAll('source').forEach(s=>{ if(!s.src) s.src = s.dataset.src; });
+        v.load();
+        io.unobserve(v);
+      });
+    },{ rootMargin: '200px' });
+
+    document.querySelectorAll('video.lazyvid').forEach(v=>io.observe(v));
+  </script>
+
+</body>
+
+</html>

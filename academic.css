@@ -1,0 +1,427 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'IBM Plex Sans',"Times New Roman";
+  font-size: 0.94em;
+  margin: 0;
+  background-color: #fff;
+  color: #333;
+  padding-top: 120px;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fafafa;
+  padding: 0.1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden; /* prevents content from spilling out */
+}
+
+nav {
+  white-space: nowrap;
+}
+
+
+
+header h1 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+nav a {
+  margin-left: 1.2rem;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+
+nav a:hover {
+  color: #000;
+}
+
+main {
+  display: flex;
+  padding: 2rem;
+  margin-left: 300px;   /* match or exceed the aside's width */
+  max-width: 1000px;
+}
+
+
+aside {
+  position: fixed;
+  top: 150px;               /* Adjust based on your header height */
+  left: 0;
+  width: 300px;
+  height: calc(100vh - 100px);  /* Full viewport height minus header */
+  text-align: center;
+  padding: 1rem;
+  border-right: 1px solid #eee;
+  overflow-y: auto;
+  font-size: 0.9em;
+}
+
+
+aside img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+}
+
+/* For smaller screens */
+
+@media screen and (max-width: 768px) {
+  aside {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  main {
+    margin-left: 0;
+    flex-direction: column;
+  }
+}
+
+
+.content {
+  padding-left: 2rem;
+  flex: 1;
+}
+
+.content h2, h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+/* The links in the aside section */
+.social-icons {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  gap: 16px;                 /* Space between icons */
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.4rem;
+  color: #333;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #0073b1; /* Optional: Use a hover color */
+}
+
+.social-icons a:nth-child(1) { color: #000; }      /* GitHub */
+.social-icons a:nth-child(2) { color: #0077b5; }   /* LinkedIn */
+.social-icons a:nth-child(3) { color: #d44638; }   /* Email */
+
+
+
+.education-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.education-list ul {
+  list-style-type: circle;
+  padding-left: 1.5rem;
+  margin-top: 0.3rem;
+}
+
+.education-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Verify Certifications*/
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.cert-card {
+  background: #ffffff;
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cert-card h4 {
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+  color: #333;
+}
+
+.cert-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 0.6rem;
+}
+
+.cert-card p span {
+  font-weight: 500;
+  color: #0073b1;
+}
+
+
+/* Make only the summary/content padded; leave the root details clean */
+.cert-details {
+  margin-top: 1rem;
+  background: #f5f7fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;    
+}
+
+.cert-details[open] {
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+/* Summary row */
+.cert-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  font-family: 'Merriweather', serif;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #335581;
+  background: #eef2f7;
+  border-bottom: 1px solid #ddd;
+  transition: background-color .5s ease, color .3s ease;
+  list-style: none;              /* avoid bullets on some browsers */
+}
+
+
+/* Hide default marker across engines */
+.cert-details summary::marker { display: none; }
+.cert-details summary::-webkit-details-marker { display: none; }
+
+.cert-details summary:hover {
+  background: #e2e8f0;
+  color: #333; /* optional; remove if you want text color constant */
+}
+
+/* Custom chevron */
+.cert-details summary::after {
+  content: '\00BB';              /* » */
+  font-size: 1rem;
+  color: #888;
+  margin-left: 0.5rem;
+  transform: rotate(0deg);
+  transition: transform 0.35s ease,  color .25s ease;
+}
+
+/* Rotate chevron when open */
+.cert-details[open] summary::after {
+  transform: rotate(90deg);
+  color: #333;
+}
+
+/* Smoothly reveal the content */
+.cert-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1rem;               /* horizontal padding; vertical comes when open */
+  transition: all 0.5s ease-out;
+}
+
+.cert-details[open] .cert-content {
+  max-height: 300px;             /* pick a value big enough for expected content */
+  opacity: 1;
+  padding: 0.6rem 1rem 1rem;     /* bring in vertical padding when visible */
+}
+
+/* Inner list styling */
+.cert-details .sub-courses {
+  margin: 10px 0 5px 20px;
+  padding-left: 1.2rem;
+}
+
+.cert-details .sub-courses li { 
+  margin-bottom: 0.4rem; 
+  font-size: 12px;  
+}
+
+.cert-details .sub-courses a {
+  color: #0073b1;
+  text-decoration: none;
+}
+.cert-details .sub-courses a:hover { text-decoration: underline; }
+
+
+/*GIFS*/
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.gif-card {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gif-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.gif-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;  /* fills the top without distortion */
+  display: block;
+  margin: 0 auto;
+  
+}
+
+.gif_card_full {
+  width: 100%;
+  max-width: 450px;
+  background: #333;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1rem auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+}
+
+.gif_card_full:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+.gif_card_full img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.caption {
+  background: #fff;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 550;
+  color: #333;
+  letter-spacing: 0.5px; /*nice space*/
+
+}
+/* override only for the special gif */
+.special-gif {
+  margin: 10px auto 5px;
+}
+
+
+
+/*The animated button*/
+
+.anime-btn {
+    display: block;
+    background-color: #0073b1;
+    text-align: center;
+    color:white;
+    padding: 7px 15px;
+    font-size: 13px;
+    font-family: 'Merriweather', serif;
+    border: none;
+    cursor:pointer;
+    transition: all 0.5s;
+    width: auto;
+    border-radius: 4px;
+    outline: none;
+}
+.margin-cv {
+  margin: 10px auto;
+}
+.margin-cert {
+  margin: 5px 0;
+}
+.margin-cert-special{
+  margin: 35px 0 5px 0; 
+}
+.anime-btn:hover{
+  background-color: #005582;
+}
+.anime-btn span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.anime-btn span::after {
+    position: absolute;
+    content: '\00bb';
+    top: 0;
+    right: -20px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.anime-btn:hover span {
+    padding-right: 25px;
+}
+.anime-btn:hover span::after {
+    opacity: 1;
+    right: 0;
+}
+.anime-btn a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f2f2f2;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+}
+
+
+
